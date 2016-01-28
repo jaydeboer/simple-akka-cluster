@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "description": "Akka.Sample.Dnx.Shared Class Library",
+  "authors": [ "Class Library template" ],
+  "tags": [""],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "tooling": {
+    "defaultNamespace": "Akka.Sample.Dnx.Shared"
+  },
+
+	"frameworks": {
+		"net451": { }
+	},
+	"dependencies": {
+		"Akka": "1.0.6",
+		"Akka.Cluster.Tools": "1.0.6"
+	}
+}

@@ -1,0 +1,32 @@
+{
+  "version": "1.0.0-*",
+  "description": "Akka.Sample.Dnx.Remote Console Application",
+  "authors": [ "" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "tooling": {
+    "defaultNamespace": "Akka.Sample.Dnx.Remote"
+  },
+
+	"dependencies": {
+		"Akka": "1.0.6",
+		"Akka.Cluster": "1.0.6.17-beta",
+		"Akka.Cluster.Tools": "1.0.6",
+		"Akka.Serialization.Wire": "1.0.6.17-beta",
+		"Akka.Sample.Dnx.Shared": "1.0.0-*"
+	},
+
+  "commands": {
+    "Akka.Sample.Dnx.Remote": "Akka.Sample.Dnx.Remote"
+  },
+
+  "frameworks": {
+    "dnx451": { }
+  }
+}
