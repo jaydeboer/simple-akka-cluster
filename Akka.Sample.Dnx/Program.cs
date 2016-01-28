@@ -1,4 +1,6 @@
 using Akka.Actor;
+using Akka.Cluster.Tools.PublishSubscribe;
+using Akka.Sample.Dnx.Shared;
 using Akka.Sample.Dnx.Shared.Actors;
 using System;
 using System.Collections.Generic;
@@ -12,8 +14,13 @@ namespace Akka.Sample.Dnx
         public static void Main(string[] args)
         {
 			var system = ActorSystem.Create("sample-system");
-			var actor = system.ActorOf(Props.Create(() => new StationActor()));
-			actor.Tell(new StationActor.IncrementMessage());
+			system.ActorOf(Props.Create(() => new StationActor()));
+
+			Console.ReadKey();
+
+			var mediator = DistributedPubSub.Get(system).Mediator;
+
+			mediator.Tell(new Publish(Topics.StationStatSynchonization, new StationActor.IncrementMessage()));
 
             Console.Read();
         }

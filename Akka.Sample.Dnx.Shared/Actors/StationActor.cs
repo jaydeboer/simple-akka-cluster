@@ -1,4 +1,5 @@
 ﻿using Akka.Actor;
+using Akka.Cluster.Tools.PublishSubscribe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,16 @@ namespace Akka.Sample.Dnx.Shared.Actors
     {
 		public StationActor()
 		{
+			var mediator = DistributedPubSub.Get(Context.System).Mediator;
+			mediator.Tell(new Subscribe(Topics.StationStatSynchonization, Self));
+
+			Receive<SubscribeAck>(_ => Become(Subscribed));
+		}
+
+		private void Subscribed()
+		{
+			Console.WriteLine("Subscribed");
+
 			Receive<IncrementMessage>(message => ReceivedIncrementMessage());
 		}
 
